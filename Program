@@ -1,0 +1,290 @@
+using System;
+
+namespace ASSESSMENT
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            // Initializing 3 x 3 Board and player character
+
+            char player = 'X';
+
+            char[,] table = new char[3, 3];
+
+            int moves = 0;
+
+            // Fixing alignment and spacing
+
+            spacing(table);
+
+
+            while (true)
+            {
+
+
+                Console.Clear();
+
+                //Introduction to game
+
+                int b = 53;
+
+                int n, m;
+
+                for(n=1; n<=3; n++)
+                {
+                    for(m=1; m<=b;m++)
+                    {
+                        if (n == m || (n + m) == (b + 1))
+
+                            Console.Write("x");
+                        else
+                            Console.Write("x");
+                    }
+                    Console.WriteLine("\b");
+
+                }
+
+                int h = 53;
+
+                int k, l;
+
+                for (k = 1; k <= 3; k++)
+                {
+                    for (l = 1; l <= h; l++)
+                    {
+                        if (k == l || (k + l) == (h + 1))
+
+                            Console.Write("o");
+                        else
+                            Console.Write("o");
+                    }
+                    Console.WriteLine("\b");
+
+                }
+
+                Console.WriteLine("_____________________________________________________ \n");
+
+                Console.WriteLine("WELCOME TO TIC-TAC-TOE!\n");
+
+                Console.WriteLine("Player 1: X  |  Player 2: O");
+
+                Console.WriteLine("_____________________________________________________ \n");
+
+                // Printing board
+
+                print(table);
+
+                Console.WriteLine("_____________________________________________________ \n");
+
+                Console.Write("Please enter your row:");
+                int yourrow = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("_____________________________________________________ \n");
+
+                Console.Write("Please enter your column:");
+                int yourcolumn = Convert.ToInt32(Console.ReadLine());
+
+                table[yourrow, yourcolumn] = player;
+                
+                // Setting game rules
+
+                if ( player == table [0, 0] && player == table [0, 1] && player == table [0, 2])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[1, 0] && player == table[1, 1] && player == table[1, 2])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[2, 0] && player == table[2, 1] && player == table[2, 2])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[0, 0] && player == table[1, 0] && player == table[2, 0])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[0, 1] && player == table[1, 1] && player == table[2, 1])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[0, 2] && player == table[1, 2] && player == table[2, 2])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[0, 0] && player == table[1, 1] && player == table[2, 2])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                if (player == table[0, 2] && player == table[1, 1] && player == table[2, 0])
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine(player + " has won the game!");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                moves = moves + 1;
+                if ( moves == 9)
+                {
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    Console.WriteLine("DRAW");
+
+                    Console.WriteLine("_____________________________________________________ \n");
+
+                    break;
+
+                }
+
+                // Player rules
+
+                player = changeplayer(player);
+
+
+            }
+
+            // End sequence
+
+            Console.WriteLine("THE GAME HAS ENDED");
+
+            Console.WriteLine("_____________________________________________________ \n");
+
+            int w = 53;
+
+            int a, s;
+
+            for (a = 1; a <= 3; a++)
+            {
+                for (s = 1; s <= w; s++)
+                {
+                    if (a == s || (a + s) == (w + 1))
+
+                        Console.Write("x");
+                    else
+                        Console.Write("x");
+                }
+                Console.WriteLine("\b");
+
+            }
+
+            int y = 53;
+
+            int t, p;
+
+            for (t = 1; t <= 3; t++)
+            {
+                for (p = 1; p <= y; p++)
+                {
+                    if (t == p || (t + p) == (y + 1))
+
+                        Console.Write("o");
+                    else
+                        Console.Write("o");
+                }
+                Console.WriteLine("\b");
+
+            }
+
+        }
+
+        static char changeplayer(char currentplayer)
+        {
+            if (currentplayer == 'X')
+            {
+                return  'O';
+            }
+            else
+            {
+                return  'X';
+            }
+        }
+        static void spacing(char[,] table)
+        {
+                for (int row = 0; row < 3; row++)
+                {
+                for (int column = 0; column < 3; column++)
+                {
+                    table[row, column] = ' ';
+                }
+                }
+        }
+        static void print(char[,] table)
+        {
+            Console.WriteLine(" | 0 | 1 | 2 |");
+                for (int row = 0; row < 3; row++)
+                {
+                
+                Console.Write(row + "| ");
+                for (int column = 0; column < 3; column++)
+                    {
+                        Console.Write(table[row, column]);
+                        Console.Write(" | ");
+                    }
+                Console.WriteLine();
+                }
+        }
+    }
+}
